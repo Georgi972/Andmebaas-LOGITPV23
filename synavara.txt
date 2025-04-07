@@ -5,4 +5,13 @@ andmebaaside haldusüsteemid - системы администрирования
 ms mysql server / oracle / mariaDB / phpmyadmin / access - программа для работы с базами данных
 
 --------------------------------------------------------------------------
-
+tabel / таблица
+rida / read -строка
+veerg /veerud - столбец/столбцы
+rida = kirjed - записи 
+veerg = väli -поля
+päring - запросы -query
+käivita päring - запусти запрос - execute query
+värskenda = uuenda - обновить
+kustuta - стирать 
+loo - создать
