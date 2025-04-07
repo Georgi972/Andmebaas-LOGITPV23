@@ -1,1 +1,8 @@
+Andmed ja informatsioon
+andmed - see on töödeldud informatsioon
+Haldus - администрирование / обслуживание юаз данных
+andmebaaside haldusüsteemid - системы администрирования баз данных - программа для работы с базами данных
+ms mysql server / oracle / mariaDB / phpmyadmin / access - программа для работы с базами данных
+
+--------------------------------------------------------------------------
 
