@@ -76,7 +76,7 @@ on inimene.elukohtID=elukoht.elukohtID
 select i.nimi, i.synniaeg, e.elukoht 
 from inimene i join elukoht e
 on i.elukohtID=e.elukohtID
-
+--tabel auto loomine
 create table auto(
 autoID int primary key identity(1,1),
 autonr varchar(7) unique,
