@@ -14,3 +14,4 @@ Näited: telefoninumber, nimi ,nimetus, isikukood, aadress
 4.  foreign key - võõrvõti / valine võti -вторичный ключ
 определяет набр значений из другой таблицы
 5.   check - check (naine, mees) - опрделяет набор значений 
+![image](https://github.com/user-attachments/assets/59b09f0f-e42e-4ca6-aee6-3b881c0b2d82)
