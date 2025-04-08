@@ -10,9 +10,9 @@ CREATE DATABASE RazinkovLOGITpv23;
 USE RazinkovLOGITpv23;
 
 --tabeli loomine
---identity(1,1) - ise täidab tabeli 1,2,3,...
+--auto_increment - ise täidab tabeli 1,2,3,...
 CREATE TABLE inimene(
-inimeneID int Primary key identity(1,1),
+inimeneID int Primary key auto_increment,
 nimi varchar(50) unique,
 synniaeg date,
 telefon char(12),
@@ -43,7 +43,7 @@ delete from inimene
 where inimeneID=4;
 --tabel elukoht
 create table elukoht(
-elukohtID int primary key identity(1,1),
+elukohtID int primary key auto_increment,
 elukoht varchar(50) unique,
 maakond varchar(50)
 );
@@ -78,7 +78,7 @@ from inimene i join elukoht e
 on i.elukohtID=e.elukohtID
 --tabel auto loomine
 create table auto(
-autoID int primary key identity(1,1),
+autoID int primary key auto_increment),
 autonr varchar(7) unique,
 mudell varchar(50),
 mark varchar(50),
