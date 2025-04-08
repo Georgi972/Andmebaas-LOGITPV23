@@ -1,10 +1,10 @@
 --kommentaar
---SQL SERVER Managment Stuudio
+--xampp control panel
 --Connect To:
---server name c:(localdb)\MSSQLLocalDB
--- Authethification 2 tüüpi:
---1.Windows Auth - localdb admini õigused
---2.SQL Server authification - kontrollida varem tehtud kasutajad
+--server name localhost - 127.0.0.1
+-- Authethification :
+-- kasutaja:root
+-- parool: ei ole
 
 CREATE DATABASE RazinkovLOGITpv23;
 USE RazinkovLOGITpv23;
