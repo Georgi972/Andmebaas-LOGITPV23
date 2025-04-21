@@ -106,3 +106,132 @@ from inimene i join auto a
 on i.elukohtID=a.autoID;
 delete from auto
 where autoID=1;
+ Tabeli struktuur tabelile `loom`
+--
+
+CREATE TABLE `loom` (
+  `loomID` int(11) NOT NULL,
+  `nimi` varchar(50) DEFAULT NULL,
+  `kaal` decimal(10,2) DEFAULT NULL,
+  `tyypID` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Andmete tõmmistamine tabelile `loom`
+--
+
+INSERT INTO `loom` (`loomID`, `nimi`, `kaal`, `tyypID`) VALUES
+(2, 'kass', 3.00, NULL),
+(3, 'kass', 3.00, 1);
+
+-- --------------------------------------------------------
+
+
+ Tabeli struktuur tabelile `tyyp`
+
+CREATE TABLE `tyyp` (
+  `tyypID` int(11) NOT NULL,
+  `tyyp` varchar(50) DEFAULT NULL,
+  `kirjeldus` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--Andmete tõmmistamine tabelile `tyyp`
+
+INSERT INTO `tyyp` (`tyypID`, `tyyp`, `kirjeldus`) VALUES
+(1, 'Башкирский', 'оранжевый в полосочку');
+
+-- Indeksid tõmmistatud tabelitele
+
+
+
+-- Indeksid tabelile `auto`
+
+ALTER TABLE `auto`
+  ADD PRIMARY KEY (`autoID`);
+
+
+-- Indeksid tabelile `elukoht`
+
+ALTER TABLE `elukoht`
+  ADD PRIMARY KEY (`elukohtID`),
+  ADD UNIQUE KEY `elukoht` (`elukoht`);
+
+
+-- Indeksid tabelile `inimene`
+
+ALTER TABLE `inimene`
+  ADD PRIMARY KEY (`inimeneID`),
+  ADD UNIQUE KEY `nimi` (`nimi`),
+  ADD KEY `fk_elukoht` (`elukohtID`),
+  ADD KEY `fk_autoID` (`autoID`),
+  ADD KEY `fk_loom` (`loomID`);
+
+
+-- Indeksid tabelile `loom`
+
+ALTER TABLE `loom`
+  ADD PRIMARY KEY (`loomID`),
+  ADD KEY `fk_tyyp` (`tyypID`);
+
+
+-- Indeksid tabelile `tyyp`
+
+ALTER TABLE `tyyp`
+  ADD PRIMARY KEY (`tyypID`);
+
+
+-- AUTO_INCREMENT tõmmistatud tabelitele
+
+
+
+-- AUTO_INCREMENT tabelile `auto`
+
+ALTER TABLE `auto`
+  MODIFY `autoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+
+-- AUTO_INCREMENT tabelile `elukoht`
+
+ALTER TABLE `elukoht`
+  MODIFY `elukohtID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+
+-- AUTO_INCREMENT tabelile `inimene`
+
+ALTER TABLE `inimene`
+  MODIFY `inimeneID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT tabelile `loom`
+--
+ALTER TABLE `loom`
+  MODIFY `loomID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT tabelile `tyyp`
+--
+ALTER TABLE `tyyp`
+  MODIFY `tyypID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Tõmmistatud tabelite piirangud
+--
+
+--
+-- Piirangud tabelile `inimene`
+--
+ALTER TABLE `inimene`
+  ADD CONSTRAINT `fk_autoID` FOREIGN KEY (`autoID`) REFERENCES `auto` (`autoID`),
+  ADD CONSTRAINT `fk_elukoht` FOREIGN KEY (`elukohtID`) REFERENCES `elukoht` (`elukohtID`),
+  ADD CONSTRAINT `fk_loom` FOREIGN KEY (`loomID`) REFERENCES `loom` (`loomID`);
+
+--
+-- Piirangud tabelile `loom`
+--
+ALTER TABLE `loom`
+  ADD CONSTRAINT `fk_tyyp` FOREIGN KEY (`tyypID`) REFERENCES `tyyp` (`tyypID`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
