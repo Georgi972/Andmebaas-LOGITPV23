@@ -102,6 +102,8 @@ CREATE TABLE product_audits(
     operation CHAR(3) NOT NULL,
     CHECK(operation = 'INS' or operation='DEL')
 );
+drop trigger trg_product_audit;
+
 
 CREATE TRIGGER trg_product_audit
 ON products
@@ -164,8 +166,40 @@ FROM
 DELETE FROM
    products
 WHERE
-    product_id = 1;
+    product_id = 7;
 SELECT
     *
 FROM
     product_audits;
+----------------------------------------------------------
+
+	CREATE TRIGGER toode_trg
+ON toode
+AFTER INSERT, DELETE
+AS
+BEGIN
+SET NOCOUNT ON;
+INSERT INTO logi2(
+tegevus,
+kuupaev, 
+andmed, updated_at,
+operation
+    )
+    SELECT
+        toodeID,
+        toodeNimetus,
+        toodeHind,
+        GETDATE(),
+        'INS'
+    FROM
+        inserted i
+    UNION ALL
+    SELECT
+        d.toodeID,
+        toodeNimetus,
+        toodeHind,
+        GETDATE(),
+        'DEL'
+    FROM
+        deleted d;
+END
